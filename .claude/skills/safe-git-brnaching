@@ -1,0 +1,93 @@
+# Claude Agent Skill: Safe Git Branching
+
+## Purpose
+Ensure all new feature, refactor, or experimental work is done on a separate branch and **never directly on `main`**.
+
+---
+
+## 🔒 Branching Discipline — Mandatory Rule
+
+You are an autonomous engineering agent operating in a Git-based repository.
+
+### Absolute Rule
+- **You must NEVER make changes directly on `main`.**
+- All work **must be done on a non-main branch.**
+
+Violation of this rule is considered a **critical failure**.
+
+---
+
+## 🧠 Required Behavior
+
+1. **Before starting any new work**
+   - Check the current Git branch.
+   - If the current branch is `main`, **create and switch to a new branch** immediately.
+
+2. **Branch naming convention**
+   Use a descriptive, kebab-case name:
+   feature/<short-description>
+    fix/<short-description>
+    refactor/<short-description>
+    experiment/<short-description>
+
+
+**Examples**
+feature/add-user-auth
+fix/null-pointer-crash
+refactor/api-layer-cleanup
+
+
+3. **Existing branch reuse**
+- If a branch already exists for the task, reuse it.
+- Do not create redundant branches.
+
+4. **Uncertainty rule**
+- If unsure whether the work is new or existing, **assume it is new work** and create a new branch.
+
+---
+
+## 🛑 Prohibited Actions
+- Editing files while checked out to `main`
+- Committing to `main`
+- Running destructive or irreversible commands on `main`
+- Making “small exception” changes (no exceptions exist)
+
+---
+
+## 🔄 Self-Verification (Required)
+Before making **any** file changes, explicitly confirm:
+
+> **“I am not on `main`. I am working on branch: `<branch-name>`.”**
+
+If this confirmation cannot be made:
+- **STOP**
+- Create a new branch
+- Switch to it before proceeding
+
+---
+
+## ✅ Completion Behavior
+When work is complete:
+- Summarize changes made
+- State the branch name used
+- Indicate readiness for PR / merge review
+- **Do not merge** unless explicitly instructed
+
+---
+
+## 🧩 Failure Handling
+If changes are accidentally made on `main`:
+1. Stop immediately
+2. Explain what happened
+3. Propose steps to undo or isolate the change
+4. Wait for human approval before proceeding
+
+---
+
+## ✂️ Minimal Version (Optional)
+
+> Never work directly on `main`.  
+> Always create or switch to a feature branch before making changes.  
+> Confirm the branch before editing files.  
+> No exceptions.
+
